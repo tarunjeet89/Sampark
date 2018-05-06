@@ -1,0 +1,297 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Kantar Sampark </title>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css">
+
+.mySlides {display:none;}
+.kantar-pic{
+height: 100px;
+}
+.divider{
+height: 35px;
+
+background-color: silver;
+background-image: url("http://i67.tinypic.com/o56ryu.png");
+}
+.main{
+background-image: url("https://i2.wp.com/www.earthriversup.com/wp-content/uploads/2016/10/Plain-design-pattern-dark-background-image-HD-resolution-latest-pack.jpg");
+}
+
+.first{
+background-image: url("http://i64.tinypic.com/t561z8.jpg");
+background-size:100% 100%;
+background-repeat: no-repeat;
+
+}
+.Heading{
+background-image: url("Images/NewSeparator.png");
+background-repeat: no-repeat;
+background-size:100% 100%;
+height: 50px;
+width: 100%;
+
+}
+
+
+.accordion-container {
+}
+.accordion-toggle {
+	position: relative;
+	display: block;
+	padding: 10px;
+	font-size: 1.5em;
+	font-weight: 300;
+	background: #999;
+	color: #fff;
+	text-decoration: none;
+	background-image: url("https://media.giphy.com/media/8wcFKVauoHcsl4kmZF/giphy.gif");
+	background-size: 100%;
+	text-align: center;
+}
+
+.accordion-toggle span.toggle-icon {
+	position: absolute;
+	top: 9px;
+	right: 20px;
+	font-size: 1.5em;
+}
+.accordion-content {
+	padding: 20px;
+	overflow: auto;
+	background-image: url("data:image/jpeg;base64,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");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	color: white;
+}
+
+#MainDIV{
+margin-left: 40px;
+margin-right: 40px;
+}
+
+#pic1{
+background-color: white;
+position: 
+}
+#dialog-1{
+display: none;
+height: 600px;
+width: 800px;
+}
+#dialog-2{
+display: none;
+height: 600px;
+width: 800px;
+}
+#imgdialog{
+width: 100%;
+min-height: 100%;
+}
+.fixed-dialog{
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}
+
+#defualtimg{
+max-height: 100%;
+max-width: 100%;
+}
+</style>
+
+
+</head>
+<body class="main" >
+<div id="MainDIV">
+
+<div class="first">
+<div class="kantar-pic"><p> <img alt="" style="margin-left: 185px;margin-top: 26px;" height="50px" src="https://ncrjobs.in/logo/20180413125524000000.jpg">
+<img alt="" style="margin-left: 128px" src="http://i63.tinypic.com/2w53y49.png"><b><span style="color: white;margin-left: 40px;">ISSUE 123 -
+MARCH 2018</span></b>
+</p> </div>
+
+</div>
+<div class="divider" ></div>
+<div class="image_slider" >
+  <img class="mySlides" src="http://www.hdwallpapersfreedownload.com/uploads/large/super-heroes/wolverine-x-men-days-of-future-past-wallpaper-hd-marvel.jpg" style="width:100%;max-height: 400px">
+  <img class="mySlides" src="https://i.pinimg.com/originals/71/77/25/717725cc134d02c8a816ee26e81037cf.jpg" style="width:100%;max-height: 400px">
+  <img class="mySlides" src="https://sad.hasbro.com/a9e79c9b34ea183cad07eb995c5f51818b6c9447/155d8f4d133e2a8b1c154232b0019250.png" style="width:100%;max-height: 400px">
+</div>
+<div class="divider" ></div>
+
+<div class="accordion-container">
+	<a href="#" class="accordion-toggle"><b>EDITORIAL</b></a>
+	<div class="accordion-content">
+		<p>Dear Readers,<br><br>
+"Happiness is not something you postpone for the future, it is something you design for the present." -Jim Rohn<br><br>
+Welcome to the 123rd issue of Sampark. The highlight of this issue is the workshop organized at various location where people had a lot to learn with fun. The pictures shared with us shows some of the enjoyable moments of the teams & we had a lot of pictures from which we could select few obviously due to space constraints. Some of the happenings missed in the earlier rounds have been covered in this one. The good performance of team members is covered in the appreciations, thanks for all the hard work & dedication. We get to know more about  Rajitha Palle our colleague from KO Hyderabad, who is featured in the KYC section. Welcome to the new joinees & wish them all the Luck.
+<br><br>
+Enjoy Reading!
+<br><br>
+Shweta Sharma
+		</p>
+	</div>
+</div>
+<div class="accordion-container">
+	<a href="#" class="accordion-toggle"><b>PERFORMANCE AS SEEN BY OUR INTERNAL CLIENTS</b></a>
+	<div class="accordion-content">
+		<ol>
+		<li>KO Bangladesh team have been received appreciation from Rana Bose (Head of Quantitative Research at MRB Bangladesh) for their excellent work on Banglalink MNP project. He mentioned – “I would like to put it on record that the support that we have received from each of the teams on this project has been fantastic. While we have had our share of hiccups 😊 on this project; however the overall level of co-operation and pro-activeness shown on deliveries has been really commendable."
+		</li><br>
+		<li>Soumik Pal- F2F Kolkata has been appreciated for Gusto 2018 track in the words, “I would like to appreciate the amount of effort you put in and the level of dedication to complete the week wise sample with quota achieved, dispatching OE sheet on timely.  Keep up the good work in next quarter also. @ Dhanraj : Thanks you so much for your support." 
+		</li><br>
+		<li>Soumik Pal- F2F Kolkata has been appreciated for BGS Beverages Track Q1 for achieving 100% sample size & quota in the words, “Soumik – this is a great achievement. It was critical that we deliver it right as it was insourced from an outsourcing partner. Keep up the great work." 
+		</li><br>
+		<li>Utpal Singh- F2F Delhi has been appreciated  for PJ Booze in the words … “The field work of the Pj Booze is over in your Centre. I would like to appreciate the amount of effort you put in and the level of dedication to complete the field work on timely.  Keep up the good work in future also. @ Amit : Thanks you so much for your support. Thank you so much.. ."
+		</li><br>
+		<li>Utpal Singh- F2F Delhi has been appreciated  for client field visits gone well ( 5 rating) – PJ Idea CSAT W20 Delhi IN client’s  words …“Good communication of the interviewer. Overall good survey.."
+		</li><br>
+		<li>Utpal Singh- F2F Delhi has been appreciated  for PJ Espirits in the words …“Commendable job done by Delhi team 😊 Thank you very much Utpal and Amit ji. The field work of the Pj Esprits is over in your Centre. I would like to appreciate the amount of effort you put in and the level of dedication to complete the field work on timely."
+		</li><br>
+		<li>Shivanshu Sachan- F2F Delhi has been appreciated for client field visits gone well ( 5 rating)– Pj Zest in client’s  words …“Very hard working and sincere team…well managed the entire schedule …very well managed interviews and accompaniments."
+		</li><br>
+		<li>Shivanshu Sachan - F2F Delhi has been appreciated for client field visits gone well ( 5 rating)– Pj Tonic in client’s  words …“Good support in terms of time and organising the group."
+		</li><br>
+		<li>Santosh Bhardwaj- F2F Delhi has been appreciated for PJ Race in the words … “Thanks a lot for completing the sample size of Race. Kudos for the hard work and extra efforts! Great job done by you and your team. Must say – the effort you have taken to complete additional interviews is commendable. Thanks Santosh! You are one person we always look upto in crisis situation. Keep it up! Please pass on our thanks to your team as well Santosh. ."
+		</li><br>
+		<li>Parnita Gupta- - F2F Delhi , Ravi Rudroj- F2F Hyderabad, Parveen Ansari - F2F Mumbai and AB Manjappa - F2F Bangalore  were appreciated by Kantar IMRB Gurgaon – PJ IKEA IN RE’s  words …“Thank you all for executing the IKEA fieldwork visits so swiftly and efficiently by putting in hours of work post work timings and for Mumbai, thank you for stretching on the weekend too. Your support and backing to the research team is particularly essential through these two years of research whether it is fixing and executing these visits, your presence at the time of furniture placement, handling queries put up by the respondents through the course of two years or passing on significant information to the respondents. Please keep up the good work! If there is any issue, any query, update or request, please feel free and comfortable in sharing. We ensure complete support from the research team too."
+		</li><br>
+		<li>Santosh Bhardwaj - F2F Delhi has been appreciated for PJ Delight in the words … “A big thank you to Santosh and team. You are an example to the rest of the teams and have proved that in times of adversity how we overcome it by playing on one’s strength. Really appreciate. Kunal and Tushar thanks for all your support."
+		</li><br>
+		<li>Sagar Bhagat F2F Ahmadabad has been appreciated for Pj. Youth survey in the words as “Great work team!!! Interesting research and the findings as per the report looks relevant whatever little understanding that I have. The FW must have been sensitive – thanks for putting in the effort and ensuring data quality. Please congratulate all involved on my behalf." 
+		</li><br>
+		<li>Shweta Mardhekar F2F Ahmadabad has been appreciated for Pj. Crystal in the words as “This is really very good despite this is your 2nd or 3rd Qual study, really appreciate this. Our main objective is to satisfy the client and you have done this. Good to see that you have shared the some points. Keep it up."
+		</li><br>
+		<li>Narendra Tiwari-  F2F Indore,  Sandeep Mayekar –F2F Mumbai & Arbaz Khan –F2F Lucknow have been appreciated in Pr USL TRACK in the words,- “This is great work guys!!! Really appreciate the hard work put in by you all. Continue the great work!! 
+		</li><br>
+		<li>Narendra Tiwari - F2F Indore has been appreciated in Pr Edeffect in the words, “Thank you so much Narendra for the timely efforts put in for this study. Appreciate!"
+		</li><br>
+		<li>Vivek Rajput - F2F Indore has been appreciated in Pj CSBC NHM in the words,  “Good show Vivek!!! Well from the trail I can judge the challenges – thanks for being bold and taking it up. Convey my congrats to the team"
+		</li><br>
+		<li>Vivek Rajput - F2F Indore has been appreciated in Pj SKY in the words,  “It was really  great effort and you were very quick in replacing the recruitment and your presence in FW made a remarkable difference . This was really very tricky criteria which was bringing doubts and confusion on each recruitment but you really made it happen"
+		</li><br>
+		<li>Vivek Rajput -  F2F Indore has been appreciated in Pj NARSS in the words,  “we appreciate all your good work and thank you all for such a wonderful show without which we couldn’t have achieved this huge accomplishment".The message from client read, “we are not concerned on the MP’s field work since we know it’s under the safe hands."
+		</li><br>
+		<li>Vaibhav Shastri -  F2F Indore has been appreciated in Pj Video Chat in the words, “Would like to appreciate your dedication and efforts you have made to deliver the activities successfully. Your availability, close monitoring and prompt actions during each activity helped to mitigate all the challenges and align the activities as per client requirement. Client was happy after each activity and didn’t raise any major concern. Thanks a lot for all your support! Keep it up! “
+		</li><br>
+		<li>Hareesh CH - KO Scripting, Bangalore has been appreciated for Project Regalia, “It had been a wonderful experience working on this with you. While I myself was not sure that this script could be done in 2 days time since it was humongous, however you not only did it on time but also managed a minimum number of changes and those too mostly cosmetics. It had a been a superb effort from your side. Just wish to work on many more such projects with you in coming times. Siva, Special thanks to you as well for assigning me a good resource on this challenging work and then helping me by allowing him to work on this continuously. Real heartfelt thanks." 
+		</li><br>
+		<li>Abhijith Karmakar - KO Scripting, Bangalore has been appreciated for Project Pegasus 4, “Hi Koshy, Hope you’re doing well. Regarding Project Pegasus (2 and 4 Wheelers track), Abhijit has taken over from Pratyush and has been supporting us extremely well. We really appreciate his support to make the changes on urgent basis as we had a client discussion the next day. As you can see from the trail mail, he delivered the script at 3am which helped us immensely. Also, Sivaguru has been kind enough to accommodate all our requests and deliver the projects on time, considering the amount of work pressure the scripting team has. Look forward to work on many more projects. Thanks 😊"
+		</li><br>
+		<li>Prabhat Mishra & Satish Parab – F2F Mumbai have been appreciated for Project Athena in the words, “Fantastic work Prabhat, managing successful senior Client field visit is really commendable. Super support Satish, keep it up! Earlier the CEO of Idea Cellular and now the Chairman of Vodafone – both delighted. Great work Prabhat. Thanks for putting in all the effort."
+		</li><br>
+		<li>Prabhat Mishra & Satish Parab – F2F Mumbai have been appreciated for Project Munchies in the words, “Thanks a lot Prabhat for putting in the effort and closing the study on time. Timelines are so very critical for us. Satish – thanks for supporting Prabhat. Well done Prabhat, your persistent efforts ensured timely completion of project, keep it up. Great Support Satish!"
+		</li><br>
+		<li>Geetanjali Kumari & Kirti Vartak – F2F Mumbai have been appreciated for Project Comfort in the words, “Great work Geetanjali and Kirti for having a client delight. Keep it up and please congratulate all involved on my behalf. Good Job Geetanjali and Kirti. Great coordination and Team work, ensuring smooth Client visit."
+		</li><br>
+		<li>Ravindra Yadav & Shivaji Indulkar – F2F Mumbai have been appreciated for Project Esprits in the words, “Good show Ravindra. Thanks for your dedication and ensuring we deliver this project right. Keep up the good work. Shivaji thanks for your guidance. Please do congratulate the team."
+		</li><br>
+		<li>Parveen Ansari – F2F Mumbai have been appreciated for Project IKEA in the words, “Great work Parveen!! This is a tough one with heavy client involvement. Thanks for putting in the effort and ensuring everything is delivered right."
+		</li><br>
+		<li>Parveen Ansari & Dushyant Mahicha – F2F Mumbai have been appreciated for Project Gorgeous in the words, “Thanking your team and you on getting appropriate recruitments and catering to the last-minute change for Project Gorgeous. Shweta- Thank you for accommodating!"
+		</li><br>
+		<li>Bhavani F2F Hyderabad has been appreciated for Pj Munchies in the words,  “The field work of the Pj Munchies is over in your Centre. I would like to appreciate the amount of effort you put in and the level of dedication to complete the field work on timely.  Keep up the good work in future also. @ Bharat : Thanks you so much for your support." 
+		</li><br>
+		<li>Anupam Rai & Vishwa Deepak Mishra - F2F Lucknow have been appreciated for Pj Saurya in the words, "The field work of the Pj Saurya is over in your Centre. I would like to appreciate the amount of effort you put in and the level of dedication to complete the large sample in such a short time. Really appreciate the efforts put in by the teams.  Keep up the good work in future also.  @ Viswa : Thanks you so much for your support.  Thank you so much.. “
+		</li><br>
+		<li>Siddharth Tripathi- F2F Lucknow has been appreciated for Tracking 5s Pack Performance  in the words, “Many thanks for all updates. Appreciate for your continuous support, hard work and completing the FW within timelines both for Pre check and Post check."
+		</li>
+		
+		
+		</ol>
+	</div>
+</div>
+<div class="accordion-container">
+	<a href="#" class="accordion-toggle"><b>KNOW YOUR COLLEAGUE - RAJITHA PALLE, KO Hyderabad
+	</b></a>
+	<div class="accordion-content">
+		<div id="container">
+		
+		<p><a onclick="openDialog()" style="cursor: pointer;"> <img id="defualtimg" style="float: left;margin-right:15px;" alt="" height="300px" width="400px" src="https://www.hdwallpapers.in/download/avengers_age_of_ultron_2015_movie-2048x1536.jpg"></a>
+		
+		<a onclick="openDialog1()" style="cursor: pointer;"><img id="defualtimg" alt=""  height="300px" width="400px" style="float: right;margin-left:15px; " src="http://www.justiceleaguethemovie.com/img/home/bg.jpg"></a>
+		</p>
+		<span><b>NAME: Rajitha Palle<br>
+YEARS AT KO: 5 Years<br>
+ONE LINER THAT DESCRIBES YOU: Never Give up</b></span>
+		</div>
+		<div id = "dialog-1" ><img id="imgdialog" alt=""  src="https://www.hdwallpapers.in/download/avengers_age_of_ultron_2015_movie-2048x1536.jpg"></div>
+		<div id = "dialog-2" ><img id="imgdialog" alt=""  src="http://www.justiceleaguethemovie.com/img/home/bg.jpg"></div>
+	</div>
+</div>
+
+</div>
+<script>
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2500);    
+}
+function openDialog(){
+	 $( "#dialog-1" ).dialog( "open" ); 
+}
+function openDialog1(){
+	 $( "#dialog-2" ).dialog( "open" ); 
+}
+
+
+$(document).ready(function () {
+	 $( "#dialog-1" ).dialog({
+         autoOpen: false,
+         resizable: false,
+         modal: true,
+         maxWidth: 1024,
+         minWidth: 800,
+         dialogClass: 'fixed-dialog',
+      });
+	 $( "#dialog-2" ).dialog({
+         autoOpen: false,
+         resizable: false,
+         modal: true,
+         maxWidth: 1024,
+         minWidth: 800,
+         dialogClass: 'fixed-dialog',
+      });
+	
+	
+	 
+	
+    $('.accordion-toggle').on('click', function(event){
+    	event.preventDefault();
+    	// create accordion variables
+    	var accordion = $(this);
+    	var accordionContent = accordion.next('.accordion-content');
+    	
+    	// toggle accordion link open class
+    	accordion.toggleClass("open");
+    	// toggle accordion content
+    	accordionContent.slideToggle(250);
+    	
+    });
+});
+
+</script>
+
+
+</body>
+
+
+</html>
